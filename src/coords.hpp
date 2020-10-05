@@ -9,8 +9,8 @@ public:
     Coords();
     Coords(int i, int j);
     Coords(std::pair< int, int> p);
-    unsigned x(){ return coords.first; }
-    unsigned y(){ return coords.second; }
+    unsigned x() { return coords.first; }
+    unsigned y() { return coords.second; }
     void set(std::pair<int, int> c);
     void setX(int x);
     void setY(int y);

@@ -18,9 +18,8 @@ bool Cell::getWolfWasHere(int index) const
     return detectCreaturesSmell(wolfSmells, index);
 }
 
-void Cell::setRabbitWasHere(bool value, int index)
-{
-    if(value){
+void Cell::setRabbitWasHere(bool value, int index) {
+    if(value) {
         rabbitSmells[index] = RABBIT_SMELL_TIME;
         totalSmell += RABBIT_SMELL_TIME;
     }else{
@@ -29,16 +28,14 @@ void Cell::setRabbitWasHere(bool value, int index)
     }
 }
 
-void Cell::removeRabbitIndexes(const Indexes &indexes)
-{
-    for(auto& x : indexes){
+void Cell::removeRabbitIndexes(const Indexes &indexes) {
+    for(auto& x : indexes) {
         rabbitIndexes.erase(x);
     }
 }
 
-void Cell::removeWolfIndexes(const Indexes &indexes)
-{
-    for(auto& x : indexes){
+void Cell::removeWolfIndexes(const Indexes &indexes) {
+    for(auto& x : indexes) {
         wolfIndexes.erase(x);
     }
 }
@@ -48,8 +45,7 @@ unsigned Cell::getTotalSmell() const
     return totalSmell;
 }
 
-void Cell::setTotalSmell(const unsigned &value)
-{
+void Cell::setTotalSmell(const unsigned &value) {
     totalSmell = value;
 }
 
@@ -67,27 +63,25 @@ size_t Cell::getWolfIndexesSize() const
     return wolfIndexes.size();
 }
 
-void Cell::decreaseWolfSmell()
-{
+void Cell::decreaseWolfSmell() {
     Indexes itdw;
     for (auto it = wolfSmells.begin(); it != wolfSmells.end(); ++it) {
-        if(it->second){
+        if(it->second) {
             it->second--;
             totalSmell = totalSmell ? totalSmell - 1 : totalSmell;
         }else{
             itdw.insert(it->first);
         }
     }
-    for(auto it = itdw.cbegin(); it  !=  itdw.cend(); ++it){
+    for(auto it = itdw.cbegin(); it  !=  itdw.cend(); ++it) {
         wolfSmells.erase(*it);
     }
 }
 
-void Cell::decreaseRabbitSmell()
-{
+void Cell::decreaseRabbitSmell() {
     Indexes itdr;
-    for(auto it = rabbitSmells.begin(); it != rabbitSmells.end(); ++it){        
-        if(it->second){ 
+    for(auto it = rabbitSmells.begin(); it != rabbitSmells.end(); ++it) {        
+        if(it->second) { 
             it->second--;
             totalSmell = totalSmell ? totalSmell - 1 : totalSmell;
         }
@@ -95,20 +89,18 @@ void Cell::decreaseRabbitSmell()
             itdr.insert(it->first);
         }
     }
-    for(auto it = itdr.cbegin(); it != itdr.cend(); ++it){
+    for(auto it = itdr.cbegin(); it != itdr.cend(); ++it) {
         rabbitSmells.erase(*it);
     }
 }
 
-void Cell::growGrass()
-{
+void Cell::growGrass() {
     if(grass < GRASS_PER_CELL) {
         grass+=3;
     }
 }
 
-void Cell::eatGrass()
-{
+void Cell::eatGrass() {
     if(grass > GRASS_PER_RABBIT) {
         grass-=GRASS_PER_RABBIT;
     } else {
@@ -116,8 +108,7 @@ void Cell::eatGrass()
     }
 }
 
-void Cell::setWolfIndexes(const Indexes &value)
-{
+void Cell::setWolfIndexes(const Indexes &value) {
     wolfIndexes = value;
 }
 
@@ -131,16 +122,15 @@ size_t Cell::getRabbitIndexesSize() const
     return rabbitIndexes.size();
 }
 
-void Cell::setRabbitIndexes(const Indexes &value)
-{
+void Cell::setRabbitIndexes(const Indexes &value) {
     rabbitIndexes = value;
 }
 
-void Cell::removeWolfIndex(int index){
+void Cell::removeWolfIndex(int index) {
     wolfIndexes.erase(index);
 }
 
-void Cell::removeRabbitIndex(int index){
+void Cell::removeRabbitIndex(int index) {
     rabbitIndexes.erase(index);
 }
 
@@ -153,9 +143,8 @@ void Cell::removeFirstRabbitIndex() {
 }
 
 
-void Cell::setWolfWasHere(bool value, int index)
-{
-    if(value){
+void Cell::setWolfWasHere(bool value, int index) {
+    if(value) {
         wolfSmells[index] = WOLF_SMELL_TIME;
         totalSmell += WOLF_SMELL_TIME;
     }else{
@@ -164,11 +153,11 @@ void Cell::setWolfWasHere(bool value, int index)
     }
 }
 
-void Cell::addPredator(int index){ 
+void Cell::addPredator(int index) { 
     wolfIndexes.insert(index);
 }
 
-void Cell::addVictim(int index){ 
+void Cell::addVictim(int index) { 
     rabbitIndexes.insert(index); 
 }
 
@@ -177,7 +166,6 @@ bool Cell::isThereGrass() const
     return grass >= GRASS_PER_RABBIT;
 }
 
-void Cell::setGrass(bool value)
-{
+void Cell::setGrass(bool value) {
     grass = value;
 }

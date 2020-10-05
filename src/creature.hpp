@@ -23,7 +23,7 @@ protected:
 public:
     Creature(int _hungry);
     Creature() : Creature(1) {}
-    virtual ~Creature(){}
+    virtual ~Creature() {}
     virtual Coords getCoords() const;
     virtual void setCoords(const Coords &value);
     virtual bool isMale() const;

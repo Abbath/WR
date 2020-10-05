@@ -58,6 +58,7 @@ public:
     Cell& getCreatureCell(Coords coords);
     void run();
 public:
+    std::atomic_bool stopped = false;
     CS_SIGNAL_1(Public, void nextStep())
     CS_SIGNAL_2(nextStep) 
 };
